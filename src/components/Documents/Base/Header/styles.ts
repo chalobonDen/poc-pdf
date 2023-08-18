@@ -22,7 +22,7 @@ export const getStyles = (color: string = "red") =>
     },
     label: {
       color,
-      width: 50,
+      width: 65,
     },
     customerLable: {
       color,
@@ -31,10 +31,11 @@ export const getStyles = (color: string = "red") =>
     address: {
       maxWidth: 240,
     },
-    containerLabel: {
+    contentLabel: {
       flexDirection: "row",
+      lineHeight: 1.35,
     },
-    containerLogo: {
+    contentLogo: {
       flexDirection: "row",
       alignItems: "center",
     },

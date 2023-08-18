@@ -20,6 +20,7 @@ interface IHeaderProps {
     expiredDate: string;
   };
   color?: string;
+  fixed?: boolean
 }
 
 const Header: FC<IHeaderProps> = ({
@@ -39,15 +40,16 @@ const Header: FC<IHeaderProps> = ({
     expiredDate,
   },
   color = "black",
+  fixed = false,
 }) => {
   const styles = getStyles(color);
 
   return (
-    <View style={{ flexDirection: "row" }}>
+    <View style={{ flexDirection: "row" }} fixed={fixed}>
       {/* Left */}
       <View style={{ flex: 1 }}>
         {/* Owner */}
-        <View style={styles.containerLogo}>
+        <View style={styles.contentLogo}>
           <Image src="/assets/image/logo-olufy.jpg" style={styles.logo} />
           <Image src="/assets/image/Olufy.jpg" style={styles.logoText} />
         </View>
@@ -80,19 +82,19 @@ const Header: FC<IHeaderProps> = ({
 
         <View style={styles.divider}></View>
 
-        <View style={styles.containerLabel}>
+        <View style={styles.contentLabel}>
           <Text style={styles.label}>เลขที่</Text>
           <Text>{number}</Text>
         </View>
-        <View style={styles.containerLabel}>
+        <View style={styles.contentLabel}>
           <Text style={styles.label}>วันที่</Text>
           <Text>{date}</Text>
         </View>
-        <View style={styles.containerLabel}>
+        <View style={styles.contentLabel}>
           <Text style={styles.label}>ผู้ขาย</Text>
           <Text>{renderText(seller)}</Text>
         </View>
-        <View style={styles.containerLabel}>
+        <View style={styles.contentLabel}>
           <Text style={styles.label}>{renderText(`ครบกำหนด`)}</Text>
           <Text>{renderText(expiredDate)}</Text>
         </View>

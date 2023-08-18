@@ -7,7 +7,7 @@ interface ITriangleProps {
   color: string;
 }
 
-const Triangle: FC<ITriangleProps> = ({ color, size = 55 }) => {
+const Triangle: FC<ITriangleProps> = ({ color, size = 45 }) => {
 
   const styles = getStyles(size);
 

@@ -16,6 +16,7 @@ export const baseStyle = StyleSheet.create({
     padding: "0.5in",
     fontSize: 9.5,
     position: 'relative',
+    lineHeight: 1.25,
   },
   title: {
     fontSize: 16,
