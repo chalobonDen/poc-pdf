@@ -9,21 +9,19 @@ import Table, { TableColumn } from "../Base/Table";
 import { renderText } from "./utils";
 import { useMemo } from "react";
 import { ISimpleInvoice } from "../../../types/modules/invoice";
+import Footer from "../Base/Footer";
 
 const color = "#744595";
 
-const MOCK = [
-  ...Array(100).keys()].map((n) => 
-    ({
-      orderId: n,
-      description: renderText(`Server & Management ( Monthly Plan / 2022 )
+const MOCK = [...Array(20).keys()].map((n) => ({
+  orderId: n,
+  description: renderText(`Server & Management ( Monthly Plan / 2022 )
 บริการ บริหารและดูแลจัดการเซิร์ฟเวอร์ รายเดือน / ประจำเดือนธันวาคม 2565`),
-      amount: 10,
-      price: 250,
-      discount: 15,
-      value: 500,
-    }),
-  )
+  amount: 10,
+  price: 250,
+  discount: 15,
+  value: 500,
+}));
 
 const InvoiceDocument = () => {
   // _Memo
@@ -73,7 +71,7 @@ const InvoiceDocument = () => {
       <Page size="A4" style={styles.page}>
         <Triangle color={color} />
         <Header
-        fixed={true}
+          fixed={true}
           data={{
             sellerName: `บริษัท โอลูฟาย จำกัด (สำนักงานใหญ่)`,
             sellerAddress: `138/37 ซอย ลาดพร้าว 41 แยก 6-9 แขวง จันทีเกษม เขต จตุจักร กรุงเทพมหานคร 10900`,
@@ -93,6 +91,12 @@ const InvoiceDocument = () => {
         />
 
         <Table columns={columns} dataSource={MOCK ?? []} />
+        <Footer
+          data={{
+            customerName: `บริษัท เพลย์โพสต์ จํากัด`,
+            sellerName: `บริษัท โอลูฟาย จํากัด`,
+          }}
+        />
       </Page>
     </Document>
   );
