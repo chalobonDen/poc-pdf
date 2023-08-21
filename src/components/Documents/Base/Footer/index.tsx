@@ -29,7 +29,7 @@ const Footer: FC<IFooterProps> = ({ data: { sellerName, customerName } }) => {
       </View>
 
       {/* logo */}
-      <View style={{ width: "30%" }} debug>
+      <View style={{ width: "30%" }}>
         <Image src="/assets/image/logo-footer.jpg" style={styles.logo} />
       </View>
 
