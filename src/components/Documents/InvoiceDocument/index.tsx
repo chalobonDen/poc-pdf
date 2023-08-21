@@ -2,7 +2,6 @@
 import { Document, Page } from "@react-pdf/renderer";
 
 import { styles } from "./styles";
-// import { renderText } from "./utils";
 import Header from "../Base/Header";
 import Triangle from "../Base/Triangle";
 import Table, { TableColumn } from "../Base/Table";
@@ -10,10 +9,11 @@ import { renderText } from "./utils";
 import { useMemo } from "react";
 import { ISimpleInvoice } from "../../../types/modules/invoice";
 import Footer from "../Base/Footer";
+import InvoiceSummary from "../Base/InvoiceSummary";
 
 const color = "#744595";
 
-const MOCK = [...Array(20).keys()].map((n) => ({
+const MOCK = [...Array(13).keys()].map((n) => ({
   orderId: n,
   description: renderText(`Server & Management ( Monthly Plan / 2022 )
 บริการ บริหารและดูแลจัดการเซิร์ฟเวอร์ รายเดือน / ประจำเดือนธันวาคม 2565`),
@@ -22,6 +22,18 @@ const MOCK = [...Array(20).keys()].map((n) => ({
   discount: 15,
   value: 500,
 }));
+
+const data = {
+  textBahtLabel: "สามพันสี่ร้อยเอ็ดบาทแปดสิบเจ็ดสตางค์",
+  totalPrice: 3500,
+  beforeVatPrice: 3271,
+  vat: 228,
+  netPrice: 3500,
+  tax: 98,
+  total: 3401,
+
+  remark: "-กรุณาส่งใบหัก ณ ที่จ่ายตามที่อยู่บริษัทหลังชำระเงิน",
+};
 
 const InvoiceDocument = () => {
   // _Memo
@@ -91,6 +103,7 @@ const InvoiceDocument = () => {
         />
 
         <Table columns={columns} dataSource={MOCK ?? []} />
+        <InvoiceSummary data={data} color={color} />
         <Footer
           data={{
             customerName: `บริษัท เพลย์โพสต์ จํากัด`,
